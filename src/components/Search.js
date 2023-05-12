@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Search() {
+function Search({setSearch}) {
+  //The state on line 5 is for the onchange controlling the form input within this element
+  const [searchInput, setSearchInput] = useState("")
+  
+  
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    //console.log("submitted");
+    setSearch(searchInput);
   }
 
   return (
@@ -12,8 +17,8 @@ function Search() {
         type="text"
         id="search"
         placeholder="search free stuff"
-        value={""}
-        onChange={(e) => console.log(e.target.value)}
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
       />
       <button type="submit">🔍</button>
     </form>
